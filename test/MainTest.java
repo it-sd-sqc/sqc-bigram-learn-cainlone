@@ -61,4 +61,24 @@ class MainTest {
   }
 
   // TODO: Create your test(s) below. /////////////////////////////////////////
+
+  @Test
+  void getId() {
+    assertDoesNotThrow(
+      () -> {
+        Connection db = Main.createConnection();
+        
+        Main.getId(db, "'"); // Any word with an apostrophe
+      }
+    );
+  }
+
+  @Test
+  void main() {
+    assertDoesNotThrow(
+      () -> {
+        Main.main(new String[]{"./sample-texts/victor-dead-letter.txt"}); // contains a word with an apostrophe fairly early on
+      }
+    );
+  }
 }
